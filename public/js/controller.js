@@ -3,31 +3,37 @@
 app.controller('changeCalculatorController', function($scope) {
 	$scope.change = {};
   $scope.invalidInput = false;
-	$scope.coins = [0.01, 0.05, 0.10, 0.25]
-  $scope.calculateChange = function (amount) {
+	$scope.invalidCustomCoin = false;
+	$scope.coins = [0.25, 0.10, 0.05, 0.01]
+  $scope.calculateChange = function (customCoinAmount, amount) {
+		customCoinAmount = customCoinAmount / 100;
+		if ($scope.coins.indexOf(customCoinAmount) != -1) {
+			$scope.invalidCustomCoin = true;
+		} else if (customCoinAmount > 0) {
+			$scope.coins.push(customCoinAmount);
+		}
     $scope.amount = '';
-    console.log(parseInt(amount));
+		$scope.customCoinAmount = '';
     amount = Math.round(amount * 100) / 100;
     if (amount == Number(amount) && Number(amount) > 0) {
       $scope.invalidInput = false;
 			$scope.coins = $scope.coins.sort((a,b) => b-a)
-			var amountReduced = Number(amount)
+			console.log($scope.coins);
+			var amountReduced = Number(amount) * 100
+			console.log(amountReduced);
 			$scope.change = $scope.coins.reduce((change, coin) => {
-				console.log(coin);
-				var coinKey = coin * 100
-				change[coinKey] = Math.floor(amountReduced / coin)
-				amountReduced = amountReduced % coin;
-				console.log(change);
+				if (coin == 0.01) {
+					change['1'] = Math.round(amountReduced)
+				} else {
+					console.log(coin);
+					var coinKey = coin * 100
+					change[coinKey] = Math.floor(amountReduced / (coin*100))
+					console.log(amountReduced, coin);
+					amountReduced = amountReduced % (coin*100);
+				}
 				return change
 			}, {})
 			console.log($scope.change);
-      // $scope.change.quarters = Math.floor(amount / 0.25);
-      // amount = ((amount * 100) % 25) / 100;
-      // console.log(amount);
-      // $scope.change.dimes = Math.floor(amount / 0.1);
-      // amount = ((amount * 100) % 10) / 100;
-      // $scope.change.nickels = Math.floor(amount / 0.05);
-      // $scope.change.pennies = Math.round((amount * 100) % 5);
     } else {
       $scope.invalidInput = true;
     }
