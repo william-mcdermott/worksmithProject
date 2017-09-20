@@ -1,3 +1,16 @@
 p {
   color: red;
 }
+
+h1 {
+  text-align: center;
+}
+
+form {
+  padding-top: 90px;
+}
+
+body {
+  background-image: url('../img/bill.jpg');
+  background-size: 100%;
+}

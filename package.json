@@ -1,0 +1,20 @@
+{
+  "name": "worksmithproject",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "node_modules/http-server/bin/http-server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/william-mcdermott/worksmithProject.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/william-mcdermott/worksmithProject/issues"
+  },
+  "homepage": "https://github.com/william-mcdermott/worksmithProject#readme"
+}
