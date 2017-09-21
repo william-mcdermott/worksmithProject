@@ -24,5 +24,4 @@ app.controller('changeCalculatorController', function($scope) {
       $scope.invalidInput = true;
     }
   };
-
 });
