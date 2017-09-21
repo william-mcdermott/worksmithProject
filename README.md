@@ -1,3 +1,5 @@
+## Bill's Change Calculator
+
 ### Prerequisites
 
 Node, NPM should be installed
