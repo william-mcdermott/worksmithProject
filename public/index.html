@@ -12,25 +12,29 @@
 </head>
 <body>
   <h1>Change Calculator</h1>
-  <div class="col-md-6">
-    <form ng-submit="calculateChange(customCoinAmount, amount)">
-      <div class="form-group">
-        <label for="amount">Amount to convert to change:</label>
-        <input name="amount" ng-model="amount" type="text">
+  <div class="container">
+    <div class="col">
+      <div class="row">
+        <form ng-submit="calculateChange(amount)">
+          <div class="form-group">
+            <label for="amount">Amount to convert to change:</label>
+            <input name="amount" ng-model="amount" type="text">
+            <p ng-show="invalidInput">Input must be a number greater than 0</p>
+          </div>
+          <!-- <div class="checkbox">
+            <label for="useCustomCoin"><input type="checkbox" name="useCustomCoin" ng-model="useCustomCoin">Use Custom Coin</label>
+          </div> -->
+          <!-- <div class="form-group" ng-show="useCustomCoin">
+            <label for="customCoin">Custom coin amount (in cents): <input type="number" min="0" ng-model="customCoinAmount"></label>
+            <p ng-show="invalidCustomCoin">Custom coin cannot be quarter, dime, nickel, or penny.</p>
+          </div> -->
+          <input type="submit">
+        </form>
       </div>
-      <div class="checkbox">
-        <label for="useCustomCoin"><input type="checkbox" name="useCustomCoin" ng-model="useCustomCoin">Use Custom Coin</label>
+      <div class="col" ng-repeat="(coin, number) in change">
+        <h3>{{coin*100 | number:0}}¢ pieces: {{number}}</h3>
       </div>
-      <div class="form-group" ng-show="useCustomCoin">
-        <label for="customCoin">Custom coin amount (in cents): <input type="number" min="0" ng-model="customCoinAmount"></label>
-        <p ng-show="invalidCustomCoin">Custom coin cannot be quarter, dime, nickel, or penny.</p>
-      </div>
-      <input type="submit">
-    </form>
-    <p ng-show="invalidInput">Input must be a number greater than 0</p>
-  </div>
-  <div class="col-md-6" ng-repeat="coin in coins">
-    <h3>{{coin * 100}}¢ pieces: {{change[coin*100]}}</h3>
+    </div>
   </div>
 </body>
 </html>
