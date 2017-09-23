@@ -13,21 +13,21 @@
 <body>
   <h1>Change Calculator</h1>
   <div class="container">
-    <div class="col">
-      <div class="row">
-        <form ng-submit="calculateChange(amount)">
+    <div class="row">
+      <div class="col">
+        <form ng-submit="calculateChange(amount, customCoinAmount)">
           <div class="form-group">
             <label for="amount">Amount to convert to change:</label>
             <input name="amount" ng-model="amount" type="text">
             <p ng-show="invalidInput">Input must be a number greater than 0</p>
           </div>
-          <!-- <div class="checkbox">
+          <div class="checkbox">
             <label for="useCustomCoin"><input type="checkbox" name="useCustomCoin" ng-model="useCustomCoin">Use Custom Coin</label>
-          </div> -->
-          <!-- <div class="form-group" ng-show="useCustomCoin">
+          </div>
+          <div class="form-group" ng-show="useCustomCoin">
             <label for="customCoin">Custom coin amount (in cents): <input type="number" min="0" ng-model="customCoinAmount"></label>
             <p ng-show="invalidCustomCoin">Custom coin cannot be quarter, dime, nickel, or penny.</p>
-          </div> -->
+          </div>
           <input type="submit">
         </form>
       </div>
